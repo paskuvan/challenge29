@@ -1,15 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Challenge29</title>
+    <title>Pictory</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/3.4.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-6SQbkR6/v7QGEoFg1os3KF4uJMFxP6vxm6vLCSbbwwHllJdb4FqkWMiYLtHWGGN4" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Información</h4>
+          <p><%= notice %></p>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Atención</h4>
+          <p><%= alert %></p>
+        </div>
+      <% end %>      
+      <%= yield %>
+    </div>
   </body>
 </html>
