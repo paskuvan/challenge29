@@ -4,19 +4,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if User.find_by(email: params[:user][:email]).nil?
-      @user.save
-      if @user
-        session[:user_id] = @user.id
-        redirect_to root_path
-      else
-        render :new
-      end
+   @user = User.new(user_params)
+   if @user.save
+    session[:user_id] = @user.user_id
+    redirect_to root_path
     else
-      redirect_to users_sign_up_path, alert: 'El correo ya está asociado'
+      render :new, notice: 'Not found user'
     end
   end
+  
 
   def histories
     @histories = helpers.current_user.histories

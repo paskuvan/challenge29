@@ -1,6 +1,6 @@
 module UsersHelper
   def logged?
-    session[:user_id].present? ? true : false
+    session[:user_id].present?
   end
 
   def current_user
